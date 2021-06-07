@@ -14,6 +14,7 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v1.8.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{steps.github_release.outputs}}
       - name: Create Release
         uses: actions/create-release@v1
         with:
@@ -22,4 +23,3 @@ jobs:
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-echo ${{steps.github_release.outputs}}
